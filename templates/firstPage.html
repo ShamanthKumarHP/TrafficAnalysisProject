@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html  lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>	
+	<meta name="viewport" content="width=decive-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./static/css/traffic.css" media="screen,projection"/>
+	<title>Welcome!</title>
+</head>
+<body>
+<h1>Hello! Make your travel easy &#128522	</h1>
+<form action='\Add' class="login_form" method="POST" name="form" onsubmit="return validated()">
+<div>
+	<div>
+		<label>Choose a road: </label>
+		<select name="road" id="road">
+			<option value="None" selected>None</option>
+		  	<option value="URS">URS Road, Mysuru</option>
+		  	<option value="MysRoad">MYS-BNGLR Road, Mandya</option>
+		</select>
+	</div>
+	<div id="road_error" style="margin-left:600px;">Please select a road</div>
+	<br>
+
+	<div>
+	  <label>Travel date: </label>
+	  <input type="date" id="date" name="date" required>
+	</div>
+	<br>
+	<input type="submit">
+<div>
+</form>
+<script src="./static/js/valid.js"></script>
+</body>
+</html>

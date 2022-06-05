@@ -1,0 +1,46 @@
+body{
+    background-color:rgba(245, 245, 220, 0.937);
+}
+
+*{
+     font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
+h1{
+    text-align: center;
+    padding: 8% 25% 8% 25%;
+}    
+
+.choose,.sub{
+    text-align: center;
+}
+
+form{
+    text-align:center;
+}
+
+input[type="submit"]{
+    background-color: rgb(185, 131, 93);
+    color: rgb(8, 5, 58) ;
+    padding:12px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100px;
+}
+
+input[type="submit"]:hover{
+    background-color:rgb(52, 152, 87) ;
+}
+
+.login_form #road_error{
+	margin-top: 5px;
+	width: 345px;
+	font-size: 18px;
+	color: #C62828;
+	background: rgba(255,0,0,0.1);
+	border-radius: 3px;
+	border: 1px solid #EF9A9A;
+	display: none;
+}
