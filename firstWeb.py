@@ -1,8 +1,11 @@
 from flask import Flask,request, url_for, redirect, render_template
-import pickle
+
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as gp
-import random
+
+
 import os
 import datetime
 from datetime import datetime, timedelta
@@ -43,13 +46,13 @@ specialDays={
 
 csvFiles=dict()
 csvFiles={
-    "URS" : r'C:\Users\Shamanth kumar HP\Desktop\WebD\testing\dataSheetsCSV\Byappanahalli\camera1.csv',
-    "Byyapanahalli" : r'C:\Users\Shamanth kumar HP\Desktop\WebD\testing\dataSheetsCSV\Byappanahalli\camera1.csv',
-    "MysRoad": r'C:\Users\Shamanth kumar HP\Desktop\WebD\testing\dataSheetsCSV\Byappanahalli\camera1.csv'
+    "URS" : r'C:\Users\Shamanth kumar HP\Desktop\WebD\TrafficAnalysisProject\dataSheetsCSV\Byappanahalli\camera1.csv',
+    "Byyapanahalli" : r'C:\Users\Shamanth kumar HP\Desktop\WebD\TrafficAnalysisProject\dataSheetsCSV\Byappanahalli\camera1.csv',
+    "MysRoad": r'C:\Users\Shamanth kumar HP\Desktop\WebD\TrafficAnalysisProject\dataSheetsCSV\Byappanahalli\camera1.csv'
     }
 
 def removeImg():
-    path=r'C:\Users\Shamanth kumar HP\Desktop\WebD\testing\static\plot.jpg'
+    path=r'C:\Users\Shamanth kumar HP\Desktop\WebD\TrafficAnalysisProject\static\plot.jpg'
     os.remove(path)
     return
 

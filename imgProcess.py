@@ -30,16 +30,16 @@ def intensity(n):
 def feedDataset(data):
     header = ['Date', 'Time','Day', 'Count','Intensity']
     with open('vehiclesCount.csv', 'w', encoding='UTF8', newline='') as f:
-        writer = csv.writer(f)
-        writer.writerow(header)    
-        writer.writerows(data)       
+        #writer = csv.writer(f)
+        #writer.writerow(header)    
+        #writer.writerows(data)       
         print("updated")
         
         
 min_contour_width=40  #40
 min_contour_height=40  #40
-offset=10      #10
-line_height=550#550
+offset=3      #10
+line_height=250#550
 matches =[]
 cnt=0
 def get_centroid(x, y, w, h):
@@ -52,7 +52,7 @@ def get_centroid(x, y, w, h):
         
 #cap = cv2.VideoCapture(0)
 #cap = cv2.VideoCapture('vehicles1.mp4')
-cap = cv2.VideoCapture('videos/vehicles1.mp4')
+cap = cv2.VideoCapture('videos/crop1.mp4')
 
 
 #cap.set(3,1920)
@@ -82,7 +82,7 @@ cc=0
 #cv2.imwrite(r"C:\Users\Shamanth kumar HP\Desktop\WebD\testing\videos\\" , frame1)
 while ret:
     
-    time.sleep(0.1)
+    #time.sleep(0.1)
     d = cv2.absdiff(frame1,frame2)
     grey = cv2.cvtColor(d,cv2.COLOR_BGR2GRAY)
     #cv2.imshow('ori',grey)
@@ -104,7 +104,7 @@ while ret:
             continue
         cv2.rectangle(frame1,(x-10,y-10),(x+w+10,y+h+10),(255,0,0),2)
         
-        cv2.line(frame1, (0, line_height), (1700, line_height), (0,255,0), 2)
+        cv2.line(frame1, (0, line_height), (500, line_height), (0,255,0), 2)
         centroid = get_centroid(x, y, w, h)
         matches.append(centroid)
         cv2.circle(frame1,centroid, 5, (0,255,0), -1)
