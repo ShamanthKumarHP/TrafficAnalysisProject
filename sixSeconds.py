@@ -24,20 +24,20 @@ def generateDay():
     
 def feedDataset(data):
     #header = ['Date', 'Time','Day','Intensity','Comment']
-    with open(r'C:\Users\Shamanth kumar HP\Desktop\WebD\testing\dataSheetsCSV\Byappanahalli\camera1.csv', 'a', encoding='UTF8', newline='') as f:
-        #writer = csv.writer(f)
+    with open(r'C:\Users\Shamanth kumar HP\Desktop\WebD\trafficAnalysis\dataSheetsCSV\Byappanahalli\camera1.csv', 'a', encoding='UTF8', newline='') as f:
+        writer = csv.writer(f)
         #writer.writerow(header)    
-        #writer.writerows(data)       
+        writer.writerows(data)       
         print("updated")
 
 def get_centroid(x, y, w, h):
     x1 = int(w / 2)
     y1 = int(h / 2)
-
     cx = x + x1
     cy = y + y1
     return cx,cy
 
+nn1 = time.time()
 min_contour_width=40  #40
 min_contour_height=40  #40
 offset=3      #10
@@ -55,13 +55,14 @@ cap = cv2.VideoCapture('videos/crop1.mp4')
 #cap.set(4,1080)
 
 if cap.isOpened():
-    ret,frame1 = cap.read()
+    ret,frame0 = cap.read()
 else:
     ret = False
 ret,frame1 = cap.read()
-
+ret,frame2 = cap.read()
 #cv2.imwrite(r"C:\Users\Shamanth kumar HP\Desktop\WebD\testing\videos\\emptyRoad.jpg" , frame1)
-originalPic=cv2.imread('videos/emptyRoad.jpg') #frame1 if empty
+#originalPic=cv2.imread('videos/emptyRoad.jpg') #frame1 if empty
+originalPic = frame0
 lengthOfPic = len(originalPic)
 breadthOfPic = len(originalPic[0])
 dimension = lengthOfPic * breadthOfPic #1280*720
@@ -77,11 +78,43 @@ feedList=[]
 startHour=6
 
 while ret:
+    
     numpyOnes=0
     t=False    
     
     #time.sleep(0.2)
-    d = cv2.absdiff(frame1,originalPic)
+    d0 = cv2.absdiff(frame1,originalPic)
+    #plt.imshow(d0,cmap = 'gray')
+    plt.title("d0")
+    #plt.show()
+    
+    grey0 = cv2.cvtColor(d0,cv2.COLOR_BGR2GRAY)
+    #plt.imshow(grey0,cmap = 'gray')
+    plt.title("grey0")
+    #plt.show()
+    
+    
+    blur0 = cv2.GaussianBlur(grey0,(13,13),0)
+    #plt.imshow(blur0,cmap = 'gray')
+    plt.title("blur0")
+    #plt.show()
+    
+    
+    ret0 , th0 = cv2.threshold(blur0,25,255,cv2.THRESH_BINARY)
+    #plt.imshow(th0,cmap = 'gray')
+    plt.title("th0")
+    #plt.show()
+    
+    dilated0 = cv2.dilate(th0,np.ones((3,3)))
+    #plt.imshow(dilated0,cmap = 'gray')
+    plt.title("dilated0")
+    #plt.show()
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2, 2))
+    closing = cv2.morphologyEx(dilated0, cv2.MORPH_CLOSE, kernel)
+    plt.imshow(closing, cmap = 'gray')
+    plt.title("closinmg")
+    plt.show()
+    d = cv2.absdiff(frame1,frame2)
     grey = cv2.cvtColor(d,cv2.COLOR_BGR2GRAY)
     #cv2.imshow('ori',grey)
     #blur = cv2.GaussianBlur(grey,(5,5),0)
@@ -134,16 +167,18 @@ while ret:
         startHour+=1
         
     #print(dilated)    
-    for i in dilated:
+    for i in dilated0:
         numpyOnes+=np.count_nonzero(i!=0)
         #print(len(i))
     #print(numpyOnes)
     #print(len(dilated))
     dens = int((numpyOnes / dimension)*1000) ##402*388  
-    print("frame:",str(fcount)," -density= ",dens,"-",val)
+    #print("frame:",str(fcount)," -density= ",dens,"-",val)
+    
     #plt.imshow(dilated, cmap = 'gray')
     #plt.title("frame:{0} density={1} val={2} ".format(str(fcount),str(dens),str(val)))
     #plt.show()
+    
     densityStatus=0
     if dens<50:
         densityStatus="very low"
@@ -171,9 +206,9 @@ while ret:
         
         cv2.line(frame1, (0, line_height), (500, line_height), (0,255,0), 2)
         centroid = get_centroid(x, y, w, h)
-        matches.append(centroid)
-        cv2.circle(frame1,centroid, 5, (0,255,0), -1)
-        cx,cy= get_centroid(x, y, w, h)
+        matches.append(centroid)  
+        #cv2.circle(frame1,centroid, 3, (0,255,0), -1)
+        #cx,cy= get_centroid(x, y, w, h)
         
         
         for (x,y) in matches:            
@@ -203,7 +238,8 @@ while ret:
     if cv2.waitKey(1) == 13:
         break
     #frame1 = frame2
-    ret , frame1 = cap.read()
+    frame1 = frame2
+    ret , frame2 = cap.read()
     if ret==False:
         print(fcount)
     #time.sleep(1)
@@ -218,3 +254,5 @@ feedDataset(totalList)
    
 cv2.destroyAllWindows()
 cap.release()
+nn12 = time.time()
+print(nn12-nn1)
