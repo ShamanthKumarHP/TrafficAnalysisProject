@@ -41,9 +41,14 @@ nn1 = time.time()
 min_contour_width=40  #40
 min_contour_height=40  #40
 offset=3      #10
-line_height=250#550
+line_height=200#550
 matches =[]
 cnt=0
+
+cropTop = 50
+cropBottom = 50
+cropLeft = 50
+cropRight = 50
 
 intensity={ 1:"very low",2:"low", 3:"moderate", 4:"high", 5:"very high" }  
 #cap = cv2.VideoCapture(0)
@@ -60,12 +65,18 @@ else:
     ret = False
 ret,frame1 = cap.read()
 ret,frame2 = cap.read()
+
+frame1 = frame1[cropTop:, cropLeft: ]
+frame2 = frame2[cropTop:, cropLeft: ]
 #cv2.imwrite(r"C:\Users\Shamanth kumar HP\Desktop\WebD\testing\videos\\emptyRoad.jpg" , frame1)
 #originalPic=cv2.imread('videos/emptyRoad.jpg') #frame1 if empty
-originalPic = frame0
-lengthOfPic = len(originalPic)
-breadthOfPic = len(originalPic[0])
-dimension = lengthOfPic * breadthOfPic #1280*720
+
+originalPic = frame0[cropTop:, cropLeft: ]
+len0,width0,_ = originalPic.shape
+
+dimension = len0 * width0 #1280*720
+#print(originalPic.shape)
+
 day, date = generateDay()
 
 fcount=1
@@ -77,54 +88,16 @@ feedList=[]
 #tsec=1
 startHour=6
 
+def frameOperation(f1,f2):
+    d = cv2.absdiff(f1,f2)    
+    grey = cv2.cvtColor(d,cv2.COLOR_BGR2GRAY)
+    blur = cv2.GaussianBlur(grey,(9,9),0)
+    ret , th = cv2.threshold(blur,25,255,cv2.THRESH_BINARY)
+    dilated = cv2.dilate(th,np.ones((3,3)))
+    return dilated
+
 while ret:
     
-    numpyOnes=0
-    t=False    
-    
-    #time.sleep(0.2)
-    d0 = cv2.absdiff(frame1,originalPic)
-    #plt.imshow(d0,cmap = 'gray')
-    plt.title("d0")
-    #plt.show()
-    
-    grey0 = cv2.cvtColor(d0,cv2.COLOR_BGR2GRAY)
-    #plt.imshow(grey0,cmap = 'gray')
-    plt.title("grey0")
-    #plt.show()
-    
-    
-    blur0 = cv2.GaussianBlur(grey0,(13,13),0)
-    #plt.imshow(blur0,cmap = 'gray')
-    plt.title("blur0")
-    #plt.show()
-    
-    
-    ret0 , th0 = cv2.threshold(blur0,25,255,cv2.THRESH_BINARY)
-    #plt.imshow(th0,cmap = 'gray')
-    plt.title("th0")
-    #plt.show()
-    
-    dilated0 = cv2.dilate(th0,np.ones((3,3)))
-    #plt.imshow(dilated0,cmap = 'gray')
-    plt.title("dilated0")
-    #plt.show()
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2, 2))
-    closing = cv2.morphologyEx(dilated0, cv2.MORPH_CLOSE, kernel)
-    plt.imshow(closing, cmap = 'gray')
-    plt.title("closinmg")
-    plt.show()
-    d = cv2.absdiff(frame1,frame2)
-    grey = cv2.cvtColor(d,cv2.COLOR_BGR2GRAY)
-    #cv2.imshow('ori',grey)
-    #blur = cv2.GaussianBlur(grey,(5,5),0)
-    blur = cv2.GaussianBlur(grey,(5,5),0)
-    #ret , th = cv2.threshold(blur,20,255,cv2.THRESH_BINARY)
-    ret , th = cv2.threshold(blur,20,255,cv2.THRESH_BINARY)
-    dilated = cv2.dilate(th,np.ones((3,3)))
-    #print(len(dilated[0]))
-    #print(len(dilated))
-    #print(dilated.ndim)
     if fcount%30==0:
         t=0
         #print()
@@ -165,31 +138,26 @@ while ret:
         feedList=[]
         #tsec+=1
         startHour+=1
-        
+    
+    numpyOnes=0
+    t=False    
+    
+    dilated = frameOperation(frame1,frame2)
+    #print(len(dilated[0]))
+    #print(len(dilated))
+    #print(dilated.ndim)   
     #print(dilated)    
-    for i in dilated0:
-        numpyOnes+=np.count_nonzero(i!=0)
+    
         #print(len(i))
     #print(numpyOnes)
     #print(len(dilated))
-    dens = int((numpyOnes / dimension)*1000) ##402*388  
-    #print("frame:",str(fcount)," -density= ",dens,"-",val)
+    
     
     #plt.imshow(dilated, cmap = 'gray')
     #plt.title("frame:{0} density={1} val={2} ".format(str(fcount),str(dens),str(val)))
     #plt.show()
     
-    densityStatus=0
-    if dens<50:
-        densityStatus="very low"
-    elif dens>=50 and dens<100:
-        densityStatus="low"
-    elif dens>=100 and dens<200:
-        densityStatus="moderate"
-    elif dens>=200 and dens<400:
-        densityStatus="high"
-    else:
-        densityStatus="very high"
+    
     
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2, 2))
 
@@ -202,9 +170,9 @@ while ret:
         #cv2.imshow('ori',frame1)
         if not contour_valid:
             continue
-        cv2.rectangle(frame1,(x-10,y-10),(x+w+10,y+h+10),(255,0,0),2)
+        #cv2.rectangle(frame1,(x-10,y-10),(x+w+10,y+h+10),(255,0,0),2)
         
-        cv2.line(frame1, (0, line_height), (500, line_height), (0,255,0), 2)
+        #cv2.line(frame1, (0, line_height), (500, line_height), (0,255,0), 2)
         centroid = get_centroid(x, y, w, h)
         matches.append(centroid)  
         #cv2.circle(frame1,centroid, 3, (0,255,0), -1)
@@ -215,35 +183,53 @@ while ret:
             if y<(line_height+offset) and y>(line_height-offset) :            
                 matches.remove((x,y))                
                 cnt=cnt+1
-                val=int(val/4)
+                val=int(val/2)
                 t=True
-                
-    if t==False:        
-        if densityStatus=="very high":
-            val=val+8
-        elif densityStatus=="high":
-            val=val+4
-        elif densityStatus=="moderate":
-            val=val+2
-        elif densityStatus=="low":
-            val=val+1
+              
+    if t==False:
+        dilated0 = frameOperation(frame1, originalPic)
+        
+        
     
+        for i in dilated0:
+            numpyOnes+=np.count_nonzero(i!=0)
+            
+        dens = int((numpyOnes / dimension)*1000) ##402*388  
+        #print("frame:",str(fcount)," -density= ",dens,"-",val)
+        if dens>750 or dens<50:
+            pass #error in frame or very low density
+        elif dens>=400: #very high
+            val=val+8
+        elif dens>=200: #high
+            val=val+4
+        elif dens>=100: #moderate
+            val=val+2
+        elif dens>=50: #low
+            val=val+1
+        else:
+            pass
+        plt.imshow(dilated0, cmap = 'gray')
+        plt.title("frame:{0} density={1} val={2} ".format(str(fcount),str(dens),str(val)))
+        plt.show()
          
-    cv2.putText(frame1, "Total Cars Detected: " + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
+    #cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
     #cv2.drawContours(frame1,contours,-1,(0,0,255),2)
 
-    cv2.imshow("Original" , frame1)
-    #cv2.imshow("Difference" , th)
+    #cv2.imshow("Original" , frame1)
+    #cv2.imshow("Difference" , dilated)
     
     if cv2.waitKey(1) == 13:
         break
-    #frame1 = frame2
     frame1 = frame2
     ret , frame2 = cap.read()
-    if ret==False:
-        print(fcount)
+    
+    if ret!=False:
+        frame2 = frame2[cropTop:, cropLeft: ]
+        fcount+=1
+    #print(fcount)
+        
     #time.sleep(1)
-    fcount+=1
+    
 print("total",cnt)   
 
 print(totalList)
