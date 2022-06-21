@@ -7,6 +7,8 @@ import time
 import matplotlib.pyplot as plt
 
 days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+intensity={ 1:"very low",2:"low", 3:"moderate", 4:"high", 5:"very high" }
+
 def generateDay():    
     now = datetime.datetime.now()
     #day = now.strftime("%A")
@@ -15,14 +17,6 @@ def generateDay():
     date= '06/07/2022'
     return day,date
 
-'''def csvToExcel(file1):
-    df_new = pd.read_csv(file1)  
-    GFG = pd.ExcelWriter('vehiclesCount.xlsx')
-    df_new.to_excel(GFG, index = False)  
-    GFG.save()
-    print("csv to excel converted")
-'''
-    
 def feedDataset(data):
     #header = ['Date', 'Time','Day','Intensity','Comment']
     with open(r'C:\Users\Shamanth kumar HP\Desktop\WebD\trafficAnalysis\dataSheetsCSV\Byappanahalli\camera1.csv', 'a', encoding='UTF8', newline='') as f:
@@ -54,23 +48,19 @@ line_height=190#550
 matches =[]
 cnt=0
 '''
+#day
 cropTop = 380
 cropBottom = 1080
 cropLeft = 300
 cropRight = 950
 '''
-#dark
+#night
 cropTop = 500
 cropBottom = 1080
 cropLeft = 500
 cropRight = 950
 
-intensity={ 1:"very low",2:"low", 3:"moderate", 4:"high", 5:"very high" }  
-#cap = cv2.VideoCapture(0)
-#cap = cv2.VideoCapture('vehicles1.mp4')
 cap = cv2.VideoCapture(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\pes7.mp4')
-#cap.set(3,1920)
-#cap.set(4,1080)
 if cap.isOpened():
     ret,frame0 = cap.read()
 else:
@@ -80,13 +70,11 @@ ret,frame2 = cap.read()
 
 frame1 = frame1[cropTop:cropBottom, cropLeft: cropRight]
 frame2 = frame2[cropTop:cropBottom, cropLeft:cropRight ]
-#cv2.imwrite(r"C:\Users\Shamanth kumar HP\Desktop\WebD\testing\videos\\emptyRoad.jpg" , frame1)
 originalPic=cv2.imread(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\darkRoad.jpg') #frame1 if empty
 #originalPic = frame0[cropTop:cropBottom, cropLeft: cropRight]
 len0,width0,_ = originalPic.shape
 print(originalPic.shape)
 dimension = len0 * width0 #1280*720
-#print(originalPic.shape)
 
 day, date = generateDay()
 fcount=1
@@ -97,13 +85,7 @@ trafficSix=[]
 feedList=[]
 #tsec=1
 startHour=6
-f=1
-ccc=1
-#plt.imshow(originalPic, cmap = 'gray')
-#plt.title("d")
-#plt.show()
-while ret:
-    
+while fcount<2500:    
     if fcount%25==0:
         t=0
         #print()
@@ -155,25 +137,19 @@ while ret:
     dens = int((numpyOnes / dimension)*1000)
     #cv2.imshow("dilated",dilated)
     
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2, 2))
-
-        # Fill any small holes
-    closing = cv2.morphologyEx(dilated, cv2.MORPH_CLOSE, kernel) 
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2, 2))  
+    closing = cv2.morphologyEx(dilated, cv2.MORPH_CLOSE, kernel) # Fill any small holes
     contours,h = cv2.findContours(closing,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
     for(i,c) in enumerate(contours):
         (x,y,w,h) = cv2.boundingRect(c)
         contour_valid = (w >= min_contour_width) and (h >= min_contour_height)
-        #cv2.imshow('ori',frame1)
         if not contour_valid:
             continue
         #cv2.rectangle(frame1,(x-10,y-10),(x+w+10,y+h+10),(255,0,0),2)
         
         #cv2.line(frame1, (0, line_height), (1000, line_height), (0,255,0), 2)
         centroid = get_centroid(x, y, w, h)
-        matches.append(centroid)  
-        #cv2.circle(frame1,centroid, 3, (0,255,0), -1)
-        #cx,cy= get_centroid(x, y, w, h)
-        
+        matches.append(centroid)          
         
         for (x,y) in matches:            
             if y<(line_height+offset) and y>(line_height-offset) :            
@@ -194,9 +170,6 @@ while ret:
             pass #error in frame
         elif dens0<7 and dens==0:
             originalPic = np.array(frame1)
-            f = str(fcount)
-            ccc=ccc+1
-            #print("frame:{0} dens0={1} dens={2} ".format(f,str(dens0),str(dens)))
         elif dens0>=400: #very high
             val=val+8
         elif dens0>=200: #high
@@ -208,36 +181,15 @@ while ret:
         elif dens0>=15: #very low
             pass
        
-        cv2.imshow("dil0",dilated0)
-        print("d frame:{0} val={1}  dens={2} ".format(str(fcount),str(val),str(dens0)))
-        
-        '''
-        plt.imshow(dilated0, cmap = 'gray')
-        plt.title("d0 frame:{0} dens0={1} dens={2} ".format(str(fcount),str(dens0),str(dens)))
-        plt.show()
-    #print(type(originalPic)) 
-    #print(frame1 is originalPic)   
-        cv2.imshow("ref", originalPic)
-        plt.imshow(originalPic,cmap = 'gray')
-        plt.title("frame:{0}".format(str(f)))
-        plt.show()
-        #cv2.putText(frame1, "density:" + str(dens0)+"   val:"+str(val), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 0, 0), 2)
-        #cv2.imshow("original",frame1)
-       '''   
+        #print("d frame:{0} val={1}  dens={2} ".format(str(fcount),str(val),str(dens0)))
         #cv2.imshow("dil0" , dilated0)
-    #cv2.imshow("dil" , dilated)    
-
-        
-    
+    #cv2.imshow("dil" , dilated)      
     #cv2.imshow("ref", originalPic)
     #cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
-    #cv2.drawContours(frame1,contours,-1,(0,0,255),2)
-
     #cv2.imshow("Original" , frame1)
-    #cv2.imshow("Difference" , dilated)
     
-    if cv2.waitKey(1) == 13:
-        break
+    #if cv2.waitKey(1) == 13:
+        #break
     
     frame1 = frame2
     ret , frame2 = cap.read()
@@ -250,7 +202,6 @@ while ret:
     #time.sleep(0.05)
 #cv2.imwrite(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\emptyRoad.jpg',originalPic)    
 print("total",cnt)   
-print("c",int(ccc))
 print("frame-",fcount)
 print(totalList)
 #csv    
