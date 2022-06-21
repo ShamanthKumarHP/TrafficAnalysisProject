@@ -1,3 +1,4 @@
+#%%
 import cv2
 import numpy as np
 import datetime
@@ -37,28 +38,39 @@ def get_centroid(x, y, w, h):
     cy = y + y1
     return cx,cy
 
+def frameOperation(f1,f2, blurThresh, minThresh):
+    d = cv2.absdiff(f1,f2)    
+    grey = cv2.cvtColor(d,cv2.COLOR_BGR2GRAY)
+    blur = cv2.GaussianBlur(grey,(blurThresh,blurThresh),0)
+    ret , th = cv2.threshold(blur,minThresh,255,cv2.THRESH_BINARY)
+    dilated = cv2.dilate(th,np.ones((3,3)))
+    return dilated
+
 nn1 = time.time()
 min_contour_width=40  #40
 min_contour_height=40  #40
 offset=3      #10
-line_height=200#550
+line_height=190#550
 matches =[]
 cnt=0
 
-cropTop = 50
-cropBottom = 50
-cropLeft = 50
-cropRight = 50
-
+cropTop = 380
+cropBottom = 1080
+cropLeft = 300
+cropRight = 950
+'''
+#dark
+cropTop = 500
+cropBottom = 1080
+cropLeft = 500
+cropRight = 950
+'''
 intensity={ 1:"very low",2:"low", 3:"moderate", 4:"high", 5:"very high" }  
 #cap = cv2.VideoCapture(0)
 #cap = cv2.VideoCapture('vehicles1.mp4')
-cap = cv2.VideoCapture('videos/crop1.mp4')
-
-
+cap = cv2.VideoCapture(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\pes2.mp4')
 #cap.set(3,1920)
 #cap.set(4,1080)
-
 if cap.isOpened():
     ret,frame0 = cap.read()
 else:
@@ -66,19 +78,17 @@ else:
 ret,frame1 = cap.read()
 ret,frame2 = cap.read()
 
-frame1 = frame1[cropTop:, cropLeft: ]
-frame2 = frame2[cropTop:, cropLeft: ]
+frame1 = frame1[cropTop:cropBottom, cropLeft: cropRight]
+frame2 = frame2[cropTop:cropBottom, cropLeft:cropRight ]
 #cv2.imwrite(r"C:\Users\Shamanth kumar HP\Desktop\WebD\testing\videos\\emptyRoad.jpg" , frame1)
-#originalPic=cv2.imread('videos/emptyRoad.jpg') #frame1 if empty
-
-originalPic = frame0[cropTop:, cropLeft: ]
+originalPic=cv2.imread(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\emptyRoad.jpg') #frame1 if empty
+#originalPic = frame0[cropTop:cropBottom, cropLeft: cropRight]
 len0,width0,_ = originalPic.shape
-
+print(originalPic.shape)
 dimension = len0 * width0 #1280*720
 #print(originalPic.shape)
 
 day, date = generateDay()
-
 fcount=1
 val=1
 totalList=[]
@@ -87,31 +97,27 @@ trafficSix=[]
 feedList=[]
 #tsec=1
 startHour=6
-
-def frameOperation(f1,f2):
-    d = cv2.absdiff(f1,f2)    
-    grey = cv2.cvtColor(d,cv2.COLOR_BGR2GRAY)
-    blur = cv2.GaussianBlur(grey,(9,9),0)
-    ret , th = cv2.threshold(blur,25,255,cv2.THRESH_BINARY)
-    dilated = cv2.dilate(th,np.ones((3,3)))
-    return dilated
-
+f=1
+ccc=1
+#plt.imshow(originalPic, cmap = 'gray')
+#plt.title("d")
+#plt.show()
 while ret:
     
-    if fcount%30==0:
+    if fcount%25==0:
         t=0
         #print()
         #print(fcount,"-",val)
-        if val<30:
+        if val<25:
             t=1
             #print("very low traffic")
-        elif val <100:
+        elif val <75:
             t=2
             #print("low traffic")
-        elif val <200:
+        elif val <150:
             t=3
         #print("moderate")
-        elif val <224:
+        elif val <176:
             t=4
         #print("high traffic")
         else:
@@ -120,7 +126,7 @@ while ret:
         val=1
         tempTraffic.append(t)
         
-    if fcount%180==0:
+    if fcount%125==0:
         #print(tsec,"-",tempTraffic)
         #trafficSix.append(max(tempTraffic))
         #print(max(tempTraffic))
@@ -142,22 +148,12 @@ while ret:
     numpyOnes=0
     t=False    
     
-    dilated = frameOperation(frame1,frame2)
-    #print(len(dilated[0]))
-    #print(len(dilated))
-    #print(dilated.ndim)   
-    #print(dilated)    
-    
-        #print(len(i))
-    #print(numpyOnes)
-    #print(len(dilated))
-    
-    
-    #plt.imshow(dilated, cmap = 'gray')
-    #plt.title("frame:{0} density={1} val={2} ".format(str(fcount),str(dens),str(val)))
-    #plt.show()
-    
-    
+    dilated = frameOperation(frame1, frame2, 13, 25)
+    for i in dilated:
+        numpyOnes+=np.count_nonzero(i!=0)
+            
+    dens = int((numpyOnes / dimension)*1000)
+    #cv2.imshow("dilated",dilated)
     
     kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2, 2))
 
@@ -172,7 +168,7 @@ while ret:
             continue
         #cv2.rectangle(frame1,(x-10,y-10),(x+w+10,y+h+10),(255,0,0),2)
         
-        #cv2.line(frame1, (0, line_height), (500, line_height), (0,255,0), 2)
+        #cv2.line(frame1, (0, line_height), (1000, line_height), (0,255,0), 2)
         centroid = get_centroid(x, y, w, h)
         matches.append(centroid)  
         #cv2.circle(frame1,centroid, 3, (0,255,0), -1)
@@ -187,51 +183,73 @@ while ret:
                 t=True
               
     if t==False:
-        dilated0 = frameOperation(frame1, originalPic)
-        
-        
-    
+        dilated0 = frameOperation(frame1, originalPic,21, 60)
+        #dilated0 = frameOperation(frame1, originalPic,41, 35)
         for i in dilated0:
             numpyOnes+=np.count_nonzero(i!=0)
-            
-        dens = int((numpyOnes / dimension)*1000) ##402*388  
-        #print("frame:",str(fcount)," -density= ",dens,"-",val)
-        if dens>750 or dens<50:
-            pass #error in frame or very low density
-        elif dens>=400: #very high
+           
+        dens0 = int((numpyOnes / dimension)*10000) ##402*388  
+        #print("frame:",str(fcount)," -density= ",dens0,"-",val)
+        if dens0>75000:
+            pass #error in frame
+        elif dens0<72 and dens==0:
+            originalPic = np.array(frame1)
+            f = str(fcount)
+            ccc=ccc+1
+            #print("frame:{0} dens0={1} dens={2} ".format(f,str(dens0),str(dens)))
+        elif dens0>=400: #very high
             val=val+8
-        elif dens>=200: #high
+        elif dens0>=200: #high
             val=val+4
-        elif dens>=100: #moderate
+        elif dens0>=100: #moderate
             val=val+2
-        elif dens>=50: #low
+        elif dens0>=50: #low
             val=val+1
-        else:
+        elif dens0>=15: #very low
             pass
-        #plt.imshow(dilated0, cmap = 'gray')
-        #plt.title("frame:{0} density={1} val={2} ".format(str(fcount),str(dens),str(val)))
+       
+        #plt.imshow(dilated, cmap = 'gray')
+        #plt.title("d frame:{0} dens0={1} dens={2} ".format(str(fcount),str(dens0),str(dens)))
         #plt.show()
-         
-    #cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
+        '''
+        plt.imshow(dilated0, cmap = 'gray')
+        plt.title("d0 frame:{0} dens0={1} dens={2} ".format(str(fcount),str(dens0),str(dens)))
+        plt.show()
+    #print(type(originalPic)) 
+    #print(frame1 is originalPic)   
+        cv2.imshow("ref", originalPic)
+        plt.imshow(originalPic,cmap = 'gray')
+        plt.title("frame:{0}".format(str(f)))
+        plt.show()
+        #cv2.putText(frame1, "density:" + str(dens0)+"   val:"+str(val), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 0, 0), 2)
+        #cv2.imshow("original",frame1)
+       '''   
+        #cv2.imshow("dil" , dilated0)
+        
+    
+    cv2.imshow("ref", originalPic)
+    cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
     #cv2.drawContours(frame1,contours,-1,(0,0,255),2)
 
-    #cv2.imshow("Original" , frame1)
+    cv2.imshow("Original" , frame1)
     #cv2.imshow("Difference" , dilated)
     
-    #if cv2.waitKey(1) == 13:
-        #break
+    if cv2.waitKey(1) == 13:
+        break
+    
     frame1 = frame2
     ret , frame2 = cap.read()
     
     if ret!=False:
-        frame2 = frame2[cropTop:, cropLeft: ]
+        frame2 = frame2[cropTop:cropBottom, cropLeft: cropRight]
         fcount+=1
     #print(fcount)
         
-    #time.sleep(1)
-    
+    #time.sleep(0.05)
+#cv2.imwrite(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\emptyRoad.jpg',originalPic)    
 print("total",cnt)   
-
+print("c",int(ccc))
+print("frame-",fcount)
 print(totalList)
 #csv    
 feedDataset(totalList) 
@@ -242,3 +260,5 @@ cv2.destroyAllWindows()
 cap.release()
 nn12 = time.time()
 print(nn12-nn1)
+
+# %%
