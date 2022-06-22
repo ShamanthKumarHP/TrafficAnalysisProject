@@ -1,256 +1,505 @@
 Date,Time,Day,Intensity,Comment
-05/23/2022,6,Monday,1,very low
-05/23/2022,7,Monday,3,moderate
-05/23/2022,8,Monday,4,high
-05/23/2022,9,Monday,5,very high
-05/23/2022,10,Monday,3,moderate
-05/23/2022,11,Monday,5,very high
-05/23/2022,12,Monday,4,high
-05/23/2022,13,Monday,5,very high
-05/23/2022,14,Monday,5,very high
-05/23/2022,15,Monday,5,very high
-05/23/2022,16,Monday,4,high
-05/23/2022,17,Monday,5,very high
-05/23/2022,18,Monday,5,very high
-05/23/2022,19,Monday,5,very high
-05/23/2022,20,Monday,5,very high
-05/23/2022,21,Monday,5,very high
-05/23/2022,22,Monday,5,very high
-05/24/2022,6,Tuesday,1,very low
-05/24/2022,7,Tuesday,3,moderate
-05/24/2022,8,Tuesday,4,high
-05/24/2022,9,Tuesday,5,very high
-05/24/2022,10,Tuesday,3,moderate
-05/24/2022,11,Tuesday,5,very high
-05/24/2022,12,Tuesday,4,high
-05/24/2022,13,Tuesday,5,very high
-05/24/2022,14,Tuesday,5,very high
-05/24/2022,15,Tuesday,5,very high
-05/24/2022,16,Tuesday,4,high
-05/24/2022,17,Tuesday,5,very high
-05/24/2022,18,Tuesday,5,very high
-05/24/2022,19,Tuesday,5,very high
-05/24/2022,20,Tuesday,5,very high
-05/24/2022,21,Tuesday,5,very high
-05/24/2022,22,Tuesday,5,very high
-05/25/2022,6,Wednesday,1,very low
-05/25/2022,7,Wednesday,3,moderate
-05/25/2022,8,Wednesday,4,high
-05/25/2022,9,Wednesday,5,very high
-05/25/2022,10,Wednesday,3,moderate
-05/25/2022,11,Wednesday,5,very high
-05/25/2022,12,Wednesday,3,moderate
-05/25/2022,13,Wednesday,5,very high
-05/25/2022,14,Wednesday,5,very high
-05/25/2022,15,Wednesday,5,very high
-05/25/2022,16,Wednesday,3,moderate
-05/25/2022,17,Wednesday,5,very high
-05/25/2022,18,Wednesday,5,very high
-05/25/2022,19,Wednesday,5,very high
-05/25/2022,20,Wednesday,5,very high
-05/25/2022,21,Wednesday,5,very high
-05/25/2022,22,Wednesday,5,very high
-05/26/2022,6,Thursday,1,very low
-05/26/2022,7,Thursday,3,moderate
-05/26/2022,8,Thursday,3,moderate
-05/26/2022,9,Thursday,4,high
-05/26/2022,10,Thursday,2,low
-05/26/2022,11,Thursday,4,high
-05/26/2022,12,Thursday,3,moderate
-05/26/2022,13,Thursday,4,high
-05/26/2022,14,Thursday,4,high
-05/26/2022,15,Thursday,4,high
-05/26/2022,16,Thursday,3,moderate
-05/26/2022,17,Thursday,4,high
-05/26/2022,18,Thursday,4,high
-05/26/2022,19,Thursday,4,high
-05/26/2022,20,Thursday,4,high
-05/26/2022,21,Thursday,4,high
-05/26/2022,22,Thursday,4,high
-05/27/2022,6,Friday,1,very low
-05/27/2022,7,Friday,2,low
-05/27/2022,8,Friday,3,moderate
-05/27/2022,9,Friday,3,moderate
-05/27/2022,10,Friday,2,low
-05/27/2022,11,Friday,3,moderate
-05/27/2022,12,Friday,2,low
-05/27/2022,13,Friday,4,high
-05/27/2022,14,Friday,4,high
-05/27/2022,15,Friday,4,high
-05/27/2022,16,Friday,2,low
-05/27/2022,17,Friday,4,high
-05/27/2022,18,Friday,4,high
-05/27/2022,19,Friday,4,high
-05/27/2022,20,Friday,4,high
-05/27/2022,21,Friday,4,high
-05/27/2022,22,Friday,4,high
-05/28/2022,6,Saturday,1,very low
-05/28/2022,7,Saturday,3,moderate
-05/28/2022,8,Saturday,3,moderate
-05/28/2022,9,Saturday,4,high
-05/28/2022,10,Saturday,3,moderate
-05/28/2022,11,Saturday,3,moderate
-05/28/2022,12,Saturday,3,moderate
-05/28/2022,13,Saturday,5,very high
-05/28/2022,14,Saturday,5,very high
-05/28/2022,15,Saturday,5,very high
-05/28/2022,16,Saturday,2,low
-05/28/2022,17,Saturday,5,very high
-05/28/2022,18,Saturday,5,very high
-05/28/2022,19,Saturday,5,very high
-05/28/2022,20,Saturday,5,very high
-05/28/2022,21,Saturday,5,very high
-05/28/2022,22,Saturday,5,very high
-05/29/2022,6,Sunday,1,very low
-05/29/2022,7,Sunday,3,moderate
-05/29/2022,8,Sunday,3,moderate
-05/29/2022,9,Sunday,4,high
-05/29/2022,10,Sunday,3,moderate
-05/29/2022,11,Sunday,3,moderate
-05/29/2022,12,Sunday,3,moderate
-05/29/2022,13,Sunday,5,very high
-05/29/2022,14,Sunday,5,very high
-05/29/2022,15,Sunday,5,very high
-05/29/2022,16,Sunday,2,low
-05/29/2022,17,Sunday,5,very high
-05/29/2022,18,Sunday,5,very high
-05/29/2022,19,Sunday,5,very high
-05/29/2022,20,Sunday,5,very high
-05/29/2022,21,Sunday,5,very high
-05/29/2022,22,Sunday,5,very high
-05/30/2022,6,Monday,1,very low
-05/30/2022,7,Monday,3,moderate
-05/30/2022,8,Monday,3,moderate
-05/30/2022,9,Monday,4,high
-05/30/2022,10,Monday,3,moderate
-05/30/2022,11,Monday,3,moderate
-05/30/2022,12,Monday,3,moderate
-05/30/2022,13,Monday,5,very high
-05/30/2022,14,Monday,5,very high
-05/30/2022,15,Monday,5,very high
-05/30/2022,16,Monday,2,low
-05/30/2022,17,Monday,5,very high
-05/30/2022,18,Monday,5,very high
-05/30/2022,19,Monday,5,very high
-05/30/2022,20,Monday,5,very high
-05/30/2022,21,Monday,5,very high
-05/30/2022,22,Monday,5,very high
-05/31/2022,6,Tuesday,1,very low
-05/31/2022,7,Tuesday,3,moderate
-05/31/2022,8,Tuesday,4,high
-05/31/2022,9,Tuesday,5,very high
-05/31/2022,10,Tuesday,3,moderate
-05/31/2022,11,Tuesday,5,very high
-05/31/2022,12,Tuesday,3,moderate
-05/31/2022,13,Tuesday,5,very high
-05/31/2022,14,Tuesday,5,very high
-05/31/2022,15,Tuesday,5,very high
-05/31/2022,16,Tuesday,3,moderate
-05/31/2022,17,Tuesday,5,very high
-05/31/2022,18,Tuesday,5,very high
-05/31/2022,19,Tuesday,5,very high
-05/31/2022,20,Tuesday,5,very high
-05/31/2022,21,Tuesday,5,very high
-05/31/2022,22,Tuesday,5,very high
-06/01/2022,6,Wednesday,1,very low
-06/01/2022,7,Wednesday,3,moderate
-06/01/2022,8,Wednesday,3,moderate
-06/01/2022,9,Wednesday,4,high
-06/01/2022,10,Wednesday,2,low
-06/01/2022,11,Wednesday,4,high
-06/01/2022,12,Wednesday,3,moderate
-06/01/2022,13,Wednesday,4,high
-06/01/2022,14,Wednesday,4,high
-06/01/2022,15,Wednesday,4,high
-06/01/2022,16,Wednesday,3,moderate
-06/01/2022,17,Wednesday,4,high
-06/01/2022,18,Wednesday,4,high
-06/01/2022,19,Wednesday,4,high
-06/01/2022,20,Wednesday,4,high
-06/01/2022,21,Wednesday,4,high
-06/01/2022,22,Wednesday,4,high
-06/02/2022,6,Thursday,1,very low
-06/02/2022,7,Thursday,2,low
-06/02/2022,8,Thursday,3,moderate
-06/02/2022,9,Thursday,3,moderate
-06/02/2022,10,Thursday,2,low
-06/02/2022,11,Thursday,3,moderate
-06/02/2022,12,Thursday,2,low
-06/02/2022,13,Thursday,4,high
-06/02/2022,14,Thursday,4,high
-06/02/2022,15,Thursday,4,high
-06/02/2022,16,Thursday,2,low
-06/02/2022,17,Thursday,4,high
-06/02/2022,18,Thursday,4,high
-06/02/2022,19,Thursday,4,high
-06/02/2022,20,Thursday,4,high
-06/02/2022,21,Thursday,4,high
-06/02/2022,22,Thursday,4,high
-06/03/2022,6,Friday,1,very low
-06/03/2022,7,Friday,3,moderate
-06/03/2022,8,Friday,3,moderate
-06/03/2022,9,Friday,4,high
-06/03/2022,10,Friday,3,moderate
-06/03/2022,11,Friday,3,moderate
-06/03/2022,12,Friday,3,moderate
-06/03/2022,13,Friday,5,very high
-06/03/2022,14,Friday,5,very high
-06/03/2022,15,Friday,5,very high
-06/03/2022,16,Friday,2,low
-06/03/2022,17,Friday,5,very high
-06/03/2022,18,Friday,5,very high
-06/03/2022,19,Friday,5,very high
-06/03/2022,20,Friday,5,very high
-06/03/2022,21,Friday,5,very high
-06/03/2022,22,Friday,5,very high
-06/04/2022,6,Saturday,1,very low
-06/04/2022,7,Saturday,3,moderate
-06/04/2022,8,Saturday,3,moderate
-06/04/2022,9,Saturday,4,high
-06/04/2022,10,Saturday,3,moderate
-06/04/2022,11,Saturday,3,moderate
-06/04/2022,12,Saturday,3,moderate
-06/04/2022,13,Saturday,5,very high
-06/04/2022,14,Saturday,5,very high
-06/04/2022,15,Saturday,5,very high
-06/04/2022,16,Saturday,2,low
-06/04/2022,17,Saturday,5,very high
-06/04/2022,18,Saturday,5,very high
-06/04/2022,19,Saturday,5,very high
-06/04/2022,20,Saturday,5,very high
-06/04/2022,21,Saturday,5,very high
-06/04/2022,22,Saturday,5,very high
-06/05/2022,6,Sunday,1,very low
-06/05/2022,7,Sunday,3,moderate
-06/05/2022,8,Sunday,3,moderate
-06/05/2022,9,Sunday,4,high
-06/05/2022,10,Sunday,3,moderate
-06/05/2022,11,Sunday,3,moderate
-06/05/2022,12,Sunday,3,moderate
-06/05/2022,13,Sunday,5,very high
-06/05/2022,14,Sunday,5,very high
-06/05/2022,15,Sunday,5,very high
-06/05/2022,16,Sunday,3,moderate
-06/05/2022,17,Sunday,5,very high
-06/05/2022,18,Sunday,5,very high
-06/05/2022,19,Sunday,5,very high
-06/05/2022,20,Sunday,5,very high
-06/05/2022,21,Sunday,5,very high
-06/05/2022,22,Sunday,1,very low
-06/06/2022,6,Monday,1,very low
-06/06/2022,7,Monday,3,moderate
-06/06/2022,8,Monday,3,moderate
-06/06/2022,9,Monday,5,very high
-06/06/2022,10,Monday,3,moderate
-06/06/2022,11,Monday,3,moderate
-06/06/2022,12,Monday,3,moderate
-06/06/2022,13,Monday,5,very high
-06/06/2022,14,Monday,5,very high
-06/06/2022,15,Monday,5,very high
-06/06/2022,16,Monday,2,low
-06/06/2022,17,Monday,5,very high
-06/06/2022,18,Monday,5,very high
-06/06/2022,19,Monday,5,very high
-06/06/2022,20,Monday,5,very high
-06/06/2022,21,Monday,5,very high
-06/06/2022,22,Monday,5,very high
+25-05-2022,6,Wednesday,1,very low
+25-05-2022,7,Wednesday,1,very low
+25-05-2022,8,Wednesday,1,very low
+25-05-2022,9,Wednesday,2,low
+25-05-2022,10,Wednesday,2,low
+25-05-2022,11,Wednesday,3,moderate
+25-05-2022,12,Wednesday,4,high
+25-05-2022,13,Wednesday,3,moderate
+25-05-2022,14,Wednesday,4,high
+25-05-2022,15,Wednesday,3,moderate
+25-05-2022,16,Wednesday,3,moderate
+25-05-2022,17,Wednesday,4,high
+25-05-2022,18,Wednesday,3,moderate
+25-05-2022,19,Wednesday,4,high
+25-05-2022,20,Wednesday,4,high
+25-05-2022,21,Wednesday,3,moderate
+25-05-2022,22,Wednesday,4,high
+25-05-2022,23,Wednesday,2,low
+26-05-2022,6,Thursday,1,very low
+26-05-2022,7,Thursday,1,very low
+26-05-2022,8,Thursday,1,very low
+26-05-2022,9,Thursday,2,low
+26-05-2022,10,Thursday,2,low
+26-05-2022,11,Thursday,3,moderate
+26-05-2022,12,Thursday,4,high
+26-05-2022,13,Thursday,3,moderate
+26-05-2022,14,Thursday,4,high
+26-05-2022,15,Thursday,3,moderate
+26-05-2022,16,Thursday,3,moderate
+26-05-2022,17,Thursday,4,high
+26-05-2022,18,Thursday,3,moderate
+26-05-2022,19,Thursday,4,high
+26-05-2022,20,Thursday,4,high
+26-05-2022,21,Thursday,3,moderate
+26-05-2022,22,Thursday,4,high
+26-05-2022,23,Thursday,2,low
+27-05-2022,6,Friday,1,very low
+27-05-2022,7,Friday,1,very low
+27-05-2022,8,Friday,1,very low
+27-05-2022,9,Friday,2,low
+27-05-2022,10,Friday,2,low
+27-05-2022,11,Friday,3,moderate
+27-05-2022,12,Friday,4,high
+27-05-2022,13,Friday,3,moderate
+27-05-2022,14,Friday,4,high
+27-05-2022,15,Friday,3,moderate
+27-05-2022,16,Friday,3,moderate
+27-05-2022,17,Friday,4,high
+27-05-2022,18,Friday,3,moderate
+27-05-2022,19,Friday,4,high
+27-05-2022,20,Friday,4,high
+27-05-2022,21,Friday,4,high
+27-05-2022,22,Friday,4,high
+27-05-2022,23,Friday,2,low
+28-05-2022,6,Saturday,1,very low
+28-05-2022,7,Saturday,1,very low
+28-05-2022,8,Saturday,1,very low
+28-05-2022,9,Saturday,2,low
+28-05-2022,10,Saturday,2,low
+28-05-2022,11,Saturday,3,moderate
+28-05-2022,12,Saturday,4,high
+28-05-2022,13,Saturday,3,moderate
+28-05-2022,14,Saturday,4,high
+28-05-2022,15,Saturday,3,moderate
+28-05-2022,16,Saturday,3,moderate
+28-05-2022,17,Saturday,4,high
+28-05-2022,18,Saturday,4,high
+28-05-2022,19,Saturday,4,high
+28-05-2022,20,Saturday,4,high
+28-05-2022,21,Saturday,3,moderate
+28-05-2022,22,Saturday,4,high
+28-05-2022,23,Saturday,2,low
+29-05-2022,6,Sunday,1,very low
+29-05-2022,7,Sunday,1,very low
+29-05-2022,8,Sunday,1,very low
+29-05-2022,9,Sunday,2,low
+29-05-2022,10,Sunday,2,low
+29-05-2022,11,Sunday,3,moderate
+29-05-2022,12,Sunday,4,high
+29-05-2022,13,Sunday,3,moderate
+29-05-2022,14,Sunday,4,high
+29-05-2022,15,Sunday,3,moderate
+29-05-2022,16,Sunday,3,moderate
+29-05-2022,17,Sunday,4,high
+29-05-2022,18,Sunday,3,moderate
+29-05-2022,19,Sunday,4,high
+29-05-2022,20,Sunday,4,high
+29-05-2022,21,Sunday,4,high
+29-05-2022,22,Sunday,4,high
+29-05-2022,23,Sunday,2,low
+30-05-2022,6,Monday,1,very low
+30-05-2022,7,Monday,1,very low
+30-05-2022,8,Monday,1,very low
+30-05-2022,9,Monday,2,low
+30-05-2022,10,Monday,2,low
+30-05-2022,11,Monday,3,moderate
+30-05-2022,12,Monday,4,high
+30-05-2022,13,Monday,3,moderate
+30-05-2022,14,Monday,4,high
+30-05-2022,15,Monday,3,moderate
+30-05-2022,16,Monday,3,moderate
+30-05-2022,17,Monday,4,high
+30-05-2022,18,Monday,3,moderate
+30-05-2022,19,Monday,4,high
+30-05-2022,20,Monday,4,high
+30-05-2022,21,Monday,3,moderate
+30-05-2022,22,Monday,4,high
+30-05-2022,23,Monday,2,low
+31-05-2022,6,Tuesday,1,very low
+31-05-2022,7,Tuesday,1,very low
+31-05-2022,8,Tuesday,1,very low
+31-05-2022,9,Tuesday,2,low
+31-05-2022,10,Tuesday,2,low
+31-05-2022,11,Tuesday,3,moderate
+31-05-2022,12,Tuesday,4,high
+31-05-2022,13,Tuesday,3,moderate
+31-05-2022,14,Tuesday,4,high
+31-05-2022,15,Tuesday,3,moderate
+31-05-2022,16,Tuesday,3,moderate
+31-05-2022,17,Tuesday,4,high
+31-05-2022,18,Tuesday,3,moderate
+31-05-2022,19,Tuesday,4,high
+31-05-2022,20,Tuesday,4,high
+31-05-2022,21,Tuesday,3,moderate
+31-05-2022,22,Tuesday,4,high
+31-05-2022,23,Tuesday,2,low
+01-06-2022,6,Wednesday,1,very low
+01-06-2022,7,Wednesday,1,very low
+01-06-2022,8,Wednesday,1,very low
+01-06-2022,9,Wednesday,2,low
+01-06-2022,10,Wednesday,2,low
+01-06-2022,11,Wednesday,3,moderate
+01-06-2022,12,Wednesday,4,high
+01-06-2022,13,Wednesday,3,moderate
+01-06-2022,14,Wednesday,4,high
+01-06-2022,15,Wednesday,3,moderate
+01-06-2022,16,Wednesday,3,moderate
+01-06-2022,17,Wednesday,4,high
+01-06-2022,18,Wednesday,3,moderate
+01-06-2022,19,Wednesday,4,high
+01-06-2022,20,Wednesday,4,high
+01-06-2022,21,Wednesday,3,moderate
+01-06-2022,22,Wednesday,4,high
+01-06-2022,23,Wednesday,2,low
+02-06-2022,6,Thursday,1,very low
+02-06-2022,7,Thursday,1,very low
+02-06-2022,8,Thursday,1,very low
+02-06-2022,9,Thursday,2,low
+02-06-2022,10,Thursday,2,low
+02-06-2022,11,Thursday,3,moderate
+02-06-2022,12,Thursday,4,high
+02-06-2022,13,Thursday,3,moderate
+02-06-2022,14,Thursday,4,high
+02-06-2022,15,Thursday,3,moderate
+02-06-2022,16,Thursday,3,moderate
+02-06-2022,17,Thursday,4,high
+02-06-2022,18,Thursday,3,moderate
+02-06-2022,19,Thursday,4,high
+02-06-2022,20,Thursday,4,high
+02-06-2022,21,Thursday,3,moderate
+02-06-2022,22,Thursday,4,high
+02-06-2022,23,Thursday,2,low
+03-06-2022,6,Friday,1,very low
+03-06-2022,7,Friday,1,very low
+03-06-2022,8,Friday,1,very low
+03-06-2022,9,Friday,2,low
+03-06-2022,10,Friday,2,low
+03-06-2022,11,Friday,3,moderate
+03-06-2022,12,Friday,4,high
+03-06-2022,13,Friday,3,moderate
+03-06-2022,14,Friday,4,high
+03-06-2022,15,Friday,3,moderate
+03-06-2022,16,Friday,3,moderate
+03-06-2022,17,Friday,4,high
+03-06-2022,18,Friday,4,high
+03-06-2022,19,Friday,4,high
+03-06-2022,20,Friday,4,high
+03-06-2022,21,Friday,3,moderate
+03-06-2022,22,Friday,4,high
+03-06-2022,23,Friday,2,low
+04-06-2022,6,Saturday,1,very low
+04-06-2022,7,Saturday,1,very low
+04-06-2022,8,Saturday,1,very low
+04-06-2022,9,Saturday,2,low
+04-06-2022,10,Saturday,2,low
+04-06-2022,11,Saturday,3,moderate
+04-06-2022,12,Saturday,4,high
+04-06-2022,13,Saturday,3,moderate
+04-06-2022,14,Saturday,4,high
+04-06-2022,15,Saturday,3,moderate
+04-06-2022,16,Saturday,3,moderate
+04-06-2022,17,Saturday,4,high
+04-06-2022,18,Saturday,3,moderate
+04-06-2022,19,Saturday,4,high
+04-06-2022,20,Saturday,4,high
+04-06-2022,21,Saturday,3,moderate
+04-06-2022,22,Saturday,4,high
+04-06-2022,23,Saturday,2,low
+05-06-2022,6,Sunday,1,very low
+05-06-2022,7,Sunday,1,very low
+05-06-2022,8,Sunday,1,very low
+05-06-2022,9,Sunday,2,low
+05-06-2022,10,Sunday,2,low
+05-06-2022,11,Sunday,3,moderate
+05-06-2022,12,Sunday,4,high
+05-06-2022,13,Sunday,3,moderate
+05-06-2022,14,Sunday,4,high
+05-06-2022,15,Sunday,3,moderate
+05-06-2022,16,Sunday,3,moderate
+05-06-2022,17,Sunday,4,high
+05-06-2022,18,Sunday,3,moderate
+05-06-2022,19,Sunday,4,high
+05-06-2022,20,Sunday,4,high
+05-06-2022,21,Sunday,3,moderate
+05-06-2022,22,Sunday,4,high
+05-06-2022,23,Sunday,2,low
+06-06-2022,6,Monday,1,very low
+06-06-2022,7,Monday,1,very low
+06-06-2022,8,Monday,1,very low
+06-06-2022,9,Monday,2,low
+06-06-2022,10,Monday,2,low
+06-06-2022,11,Monday,3,moderate
+06-06-2022,12,Monday,4,high
+06-06-2022,13,Monday,3,moderate
+06-06-2022,14,Monday,4,high
+06-06-2022,15,Monday,3,moderate
+06-06-2022,16,Monday,3,moderate
+06-06-2022,17,Monday,4,high
+06-06-2022,18,Monday,3,moderate
+06-06-2022,19,Monday,4,high
+06-06-2022,20,Monday,4,high
+06-06-2022,21,Monday,3,moderate
+06-06-2022,22,Monday,4,high
+06-06-2022,23,Monday,2,low
+07-06-2022,6,Tuesday,1,very low
+07-06-2022,7,Tuesday,1,very low
+07-06-2022,8,Tuesday,1,very low
+07-06-2022,9,Tuesday,2,low
+07-06-2022,10,Tuesday,2,low
+07-06-2022,11,Tuesday,3,moderate
+07-06-2022,12,Tuesday,4,high
+07-06-2022,13,Tuesday,3,moderate
+07-06-2022,14,Tuesday,4,high
+07-06-2022,15,Tuesday,3,moderate
+07-06-2022,16,Tuesday,3,moderate
+07-06-2022,17,Tuesday,4,high
+07-06-2022,18,Tuesday,3,moderate
+07-06-2022,19,Tuesday,4,high
+07-06-2022,20,Tuesday,4,high
+07-06-2022,21,Tuesday,3,moderate
+07-06-2022,22,Tuesday,4,high
+07-06-2022,23,Tuesday,2,low
+08-06-2022,6,Wednesday,1,very low
+08-06-2022,7,Wednesday,1,very low
+08-06-2022,8,Wednesday,1,very low
+08-06-2022,9,Wednesday,2,low
+08-06-2022,10,Wednesday,2,low
+08-06-2022,11,Wednesday,3,moderate
+08-06-2022,12,Wednesday,4,high
+08-06-2022,13,Wednesday,3,moderate
+08-06-2022,14,Wednesday,4,high
+08-06-2022,15,Wednesday,3,moderate
+08-06-2022,16,Wednesday,3,moderate
+08-06-2022,17,Wednesday,4,high
+08-06-2022,18,Wednesday,3,moderate
+08-06-2022,19,Wednesday,4,high
+08-06-2022,20,Wednesday,4,high
+08-06-2022,21,Wednesday,3,moderate
+08-06-2022,22,Wednesday,4,high
+08-06-2022,23,Wednesday,2,low
+09-06-2022,6,Thursday,1,very low
+09-06-2022,7,Thursday,1,very low
+09-06-2022,8,Thursday,1,very low
+09-06-2022,9,Thursday,2,low
+09-06-2022,10,Thursday,2,low
+09-06-2022,11,Thursday,3,moderate
+09-06-2022,12,Thursday,4,high
+09-06-2022,13,Thursday,3,moderate
+09-06-2022,14,Thursday,4,high
+09-06-2022,15,Thursday,3,moderate
+09-06-2022,16,Thursday,3,moderate
+09-06-2022,17,Thursday,4,high
+09-06-2022,18,Thursday,3,moderate
+09-06-2022,19,Thursday,4,high
+09-06-2022,20,Thursday,4,high
+09-06-2022,21,Thursday,3,moderate
+09-06-2022,22,Thursday,4,high
+09-06-2022,23,Thursday,2,low
+10-06-2022,6,Friday,1,very low
+10-06-2022,7,Friday,1,very low
+10-06-2022,8,Friday,1,very low
+10-06-2022,9,Friday,2,low
+10-06-2022,10,Friday,2,low
+10-06-2022,11,Friday,3,moderate
+10-06-2022,12,Friday,4,high
+10-06-2022,13,Friday,3,moderate
+10-06-2022,14,Friday,4,high
+10-06-2022,15,Friday,3,moderate
+10-06-2022,16,Friday,3,moderate
+10-06-2022,17,Friday,4,high
+10-06-2022,18,Friday,3,moderate
+10-06-2022,19,Friday,4,high
+10-06-2022,20,Friday,4,high
+10-06-2022,21,Friday,4,high
+10-06-2022,22,Friday,4,high
+10-06-2022,23,Friday,2,low
+11-06-2022,6,Saturday,1,very low
+11-06-2022,7,Saturday,1,very low
+11-06-2022,8,Saturday,1,very low
+11-06-2022,9,Saturday,2,low
+11-06-2022,10,Saturday,2,low
+11-06-2022,11,Saturday,3,moderate
+11-06-2022,12,Saturday,4,high
+11-06-2022,13,Saturday,3,moderate
+11-06-2022,14,Saturday,4,high
+11-06-2022,15,Saturday,3,moderate
+11-06-2022,16,Saturday,3,moderate
+11-06-2022,17,Saturday,4,high
+11-06-2022,18,Saturday,3,moderate
+11-06-2022,19,Saturday,4,high
+11-06-2022,20,Saturday,4,high
+11-06-2022,21,Saturday,3,moderate
+11-06-2022,22,Saturday,4,high
+11-06-2022,23,Saturday,2,low
+12-06-2022,6,Sunday,1,very low
+12-06-2022,7,Sunday,1,very low
+12-06-2022,8,Sunday,1,very low
+12-06-2022,9,Sunday,2,low
+12-06-2022,10,Sunday,2,low
+12-06-2022,11,Sunday,3,moderate
+12-06-2022,12,Sunday,4,high
+12-06-2022,13,Sunday,3,moderate
+12-06-2022,14,Sunday,4,high
+12-06-2022,15,Sunday,3,moderate
+12-06-2022,16,Sunday,3,moderate
+12-06-2022,17,Sunday,4,high
+12-06-2022,18,Sunday,3,moderate
+12-06-2022,19,Sunday,4,high
+12-06-2022,20,Sunday,4,high
+12-06-2022,21,Sunday,3,moderate
+12-06-2022,22,Sunday,4,high
+12-06-2022,23,Sunday,2,low
+13-06-2022,6,Monday,1,very low
+13-06-2022,7,Monday,1,very low
+13-06-2022,8,Monday,1,very low
+13-06-2022,9,Monday,2,low
+13-06-2022,10,Monday,2,low
+13-06-2022,11,Monday,3,moderate
+13-06-2022,12,Monday,4,high
+13-06-2022,13,Monday,3,moderate
+13-06-2022,14,Monday,4,high
+13-06-2022,15,Monday,3,moderate
+13-06-2022,16,Monday,3,moderate
+13-06-2022,17,Monday,4,high
+13-06-2022,18,Monday,3,moderate
+13-06-2022,19,Monday,4,high
+13-06-2022,20,Monday,4,high
+13-06-2022,21,Monday,3,moderate
+13-06-2022,22,Monday,4,high
+13-06-2022,23,Monday,2,low
+14-06-2022,6,Tuesday,1,very low
+14-06-2022,7,Tuesday,1,very low
+14-06-2022,8,Tuesday,1,very low
+14-06-2022,9,Tuesday,2,low
+14-06-2022,10,Tuesday,2,low
+14-06-2022,11,Tuesday,3,moderate
+14-06-2022,12,Tuesday,4,high
+14-06-2022,13,Tuesday,3,moderate
+14-06-2022,14,Tuesday,4,high
+14-06-2022,15,Tuesday,3,moderate
+14-06-2022,16,Tuesday,3,moderate
+14-06-2022,17,Tuesday,4,high
+14-06-2022,18,Tuesday,3,moderate
+14-06-2022,19,Tuesday,4,high
+14-06-2022,20,Tuesday,4,high
+14-06-2022,21,Tuesday,3,moderate
+14-06-2022,22,Tuesday,4,high
+14-06-2022,23,Tuesday,2,low
+15-06-2022,6,Wednesday,1,very low
+15-06-2022,7,Wednesday,1,very low
+15-06-2022,8,Wednesday,1,very low
+15-06-2022,9,Wednesday,2,low
+15-06-2022,10,Wednesday,2,low
+15-06-2022,11,Wednesday,3,moderate
+15-06-2022,12,Wednesday,4,high
+15-06-2022,13,Wednesday,3,moderate
+15-06-2022,14,Wednesday,4,high
+15-06-2022,15,Wednesday,3,moderate
+15-06-2022,16,Wednesday,3,moderate
+15-06-2022,17,Wednesday,4,high
+15-06-2022,18,Wednesday,3,moderate
+15-06-2022,19,Wednesday,4,high
+15-06-2022,20,Wednesday,4,high
+15-06-2022,21,Wednesday,3,moderate
+15-06-2022,22,Wednesday,4,high
+15-06-2022,23,Wednesday,2,low
+16-06-2022,6,Thursday,1,very low
+16-06-2022,7,Thursday,1,very low
+16-06-2022,8,Thursday,1,very low
+16-06-2022,9,Thursday,2,low
+16-06-2022,10,Thursday,2,low
+16-06-2022,11,Thursday,3,moderate
+16-06-2022,12,Thursday,4,high
+16-06-2022,13,Thursday,3,moderate
+16-06-2022,14,Thursday,4,high
+16-06-2022,15,Thursday,3,moderate
+16-06-2022,16,Thursday,3,moderate
+16-06-2022,17,Thursday,4,high
+16-06-2022,18,Thursday,3,moderate
+16-06-2022,19,Thursday,4,high
+16-06-2022,20,Thursday,4,high
+16-06-2022,21,Thursday,3,moderate
+16-06-2022,22,Thursday,4,high
+16-06-2022,23,Thursday,2,low
+17-06-2022,6,Friday,1,very low
+17-06-2022,7,Friday,1,very low
+17-06-2022,8,Friday,1,very low
+17-06-2022,9,Friday,2,low
+17-06-2022,10,Friday,2,low
+17-06-2022,11,Friday,3,moderate
+17-06-2022,12,Friday,4,high
+17-06-2022,13,Friday,3,moderate
+17-06-2022,14,Friday,4,high
+17-06-2022,15,Friday,3,moderate
+17-06-2022,16,Friday,3,moderate
+17-06-2022,17,Friday,4,high
+17-06-2022,18,Friday,3,moderate
+17-06-2022,19,Friday,4,high
+17-06-2022,20,Friday,4,high
+17-06-2022,21,Friday,3,moderate
+17-06-2022,22,Friday,4,high
+17-06-2022,23,Friday,2,low
+18-06-2022,6,Saturday,1,very low
+18-06-2022,7,Saturday,1,very low
+18-06-2022,8,Saturday,1,very low
+18-06-2022,9,Saturday,2,low
+18-06-2022,10,Saturday,2,low
+18-06-2022,11,Saturday,3,moderate
+18-06-2022,12,Saturday,4,high
+18-06-2022,13,Saturday,3,moderate
+18-06-2022,14,Saturday,4,high
+18-06-2022,15,Saturday,3,moderate
+18-06-2022,16,Saturday,3,moderate
+18-06-2022,17,Saturday,4,high
+18-06-2022,18,Saturday,3,moderate
+18-06-2022,19,Saturday,4,high
+18-06-2022,20,Saturday,4,high
+18-06-2022,21,Saturday,3,moderate
+18-06-2022,22,Saturday,4,high
+18-06-2022,23,Saturday,2,low
+19-06-2022,6,Sunday,1,very low
+19-06-2022,7,Sunday,1,very low
+19-06-2022,8,Sunday,1,very low
+19-06-2022,9,Sunday,2,low
+19-06-2022,10,Sunday,2,low
+19-06-2022,11,Sunday,3,moderate
+19-06-2022,12,Sunday,4,high
+19-06-2022,13,Sunday,3,moderate
+19-06-2022,14,Sunday,4,high
+19-06-2022,15,Sunday,3,moderate
+19-06-2022,16,Sunday,3,moderate
+19-06-2022,17,Sunday,4,high
+19-06-2022,18,Sunday,3,moderate
+19-06-2022,19,Sunday,4,high
+19-06-2022,20,Sunday,4,high
+19-06-2022,21,Sunday,4,high
+19-06-2022,22,Sunday,4,high
+19-06-2022,23,Sunday,2,low
+20-06-2022,6,Monday,1,very low
+20-06-2022,7,Monday,1,very low
+20-06-2022,8,Monday,1,very low
+20-06-2022,9,Monday,2,low
+20-06-2022,10,Monday,2,low
+20-06-2022,11,Monday,3,moderate
+20-06-2022,12,Monday,4,high
+20-06-2022,13,Monday,3,moderate
+20-06-2022,14,Monday,4,high
+20-06-2022,15,Monday,3,moderate
+20-06-2022,16,Monday,3,moderate
+20-06-2022,17,Monday,4,high
+20-06-2022,18,Monday,3,moderate
+20-06-2022,19,Monday,4,high
+20-06-2022,20,Monday,4,high
+20-06-2022,21,Monday,3,moderate
+20-06-2022,22,Monday,4,high
+20-06-2022,23,Monday,2,low
+21-06-2022,6,Tuesday,1,very low
+21-06-2022,7,Tuesday,1,very low
+21-06-2022,8,Tuesday,1,very low
+21-06-2022,9,Tuesday,2,low
+21-06-2022,10,Tuesday,2,low
+21-06-2022,11,Tuesday,3,moderate
+21-06-2022,12,Tuesday,4,high
+21-06-2022,13,Tuesday,3,moderate
+21-06-2022,14,Tuesday,4,high
+21-06-2022,15,Tuesday,3,moderate
+21-06-2022,16,Tuesday,3,moderate
+21-06-2022,17,Tuesday,4,high
+21-06-2022,18,Tuesday,3,moderate
+21-06-2022,19,Tuesday,4,high
+21-06-2022,20,Tuesday,4,high
+21-06-2022,21,Tuesday,3,moderate
+21-06-2022,22,Tuesday,4,high
+21-06-2022,23,Tuesday,2,low
