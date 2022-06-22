@@ -91,7 +91,7 @@ oneMinList=[]
 oneHourList = []
 feedList=[]
 startHour=6
-while fcount < 301:    
+while ret:    
     if fcount % FPS == 0:
         t=0
         if temp<22:
@@ -112,17 +112,9 @@ while fcount < 301:
         temp=1
         oneMinList.append(t)
         
-    if fcount % (FPS*60) == 0:
+    if fcount % (FPS*6) == 0:
         #s = max(oneMinList, key = oneMinList.count)
-        s = Counter(oneMinList).most_common(1)[0][0]
-        #print(oneMinList)
-        oneHourList.append(s)
-        oneMinList=[]
-        print(fcount)
-     
-    if fcount % (FPS * 60 * 60) == 0:
-        #h = max(oneHourList, key = oneHourList.count)
-        h = Counter(oneHourList).most_common(1)[0][0]
+        h = Counter(oneMinList).most_common(1)[0][0]
         feedList.append(date)
         feedList.append(startHour)
         feedList.append(day)
@@ -132,7 +124,7 @@ while fcount < 301:
         print(feedList)
         totalList.append(feedList)
         
-        oneHourList = []
+        oneMinList = []
         feedList = []
         startHour+=1
     
@@ -194,11 +186,11 @@ while fcount < 301:
         #cv2.imshow("dil0" , dilated0)
     #cv2.imshow("dil" , dilated)      
     #cv2.imshow("ref", originalPic)
-    #cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
-    #cv2.imshow("Original" , frame1)
+    cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
+    cv2.imshow("Original" , frame1)
     
-    #if cv2.waitKey(1) == 13:
-        #break
+    if cv2.waitKey(1) == 13:
+        break
     
     frame1 = frame2
     ret , frame2 = cap.read()
@@ -210,27 +202,27 @@ while fcount < 301:
         
     #time.sleep(0.05)
 #cv2.imwrite(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\emptyRoad.jpg',originalPic)    
-print("total",cnt)   
-print("frame-",fcount)
+print("total vehicles passed: ",cnt)   
+print("total frames count: ",fcount)
 
 #csv 
-if oneHourList != []:
+if oneMinList != []:
     feedList.append(date)
     feedList.append(startHour)
     feedList.append(day)
     #h = max(oneHourList, key = oneHourList.count) #for last remaining minutes != 60
-    h = Counter(oneHourList).most_common(1)[0][0]
+    h = Counter(oneMinList).most_common(1)[0][0]
     feedList.append(h)
     intense = intensity.get(h)
     feedList.append(intense)
 
     totalList.append(feedList)   
 feedDataset(totalList) 
-print(totalList)
+#print(totalList)
 #csvToExcel('vehiclesCount.csv')   
    
 cv2.destroyAllWindows()
 cap.release()
 nn12 = time.time()
-print(nn12-nn1)
+print("total time taken: ",nn12-nn1)
 
