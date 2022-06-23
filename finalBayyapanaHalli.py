@@ -42,14 +42,15 @@ def frameOperation(f1,f2, blurThresh, minThresh):
     grey = cv2.cvtColor(d,cv2.COLOR_BGR2GRAY)
     blur = cv2.GaussianBlur(grey,(blurThresh,blurThresh),0)
     ret , th = cv2.threshold(blur,minThresh,255,cv2.THRESH_BINARY)
-    dilated = cv2.dilate(th,np.ones((3,3)))
-    return dilated
+    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (3, 3))  
+    closing = cv2.morphologyEx(th, cv2.MORPH_CLOSE, kernel)  # Fill any small holes
+    return closing
 
 nn1 = time.time()
 min_contour_width=40  #40
 min_contour_height=40  #40
 offset=3      #10
-line_height=190#550
+line_height=195#550
 matches =[]
 cnt=0
 FPS = 30
@@ -97,7 +98,7 @@ while ret:
         if temp<22:
             t=1
             #print("very low traffic")
-        elif temp <75:
+        elif temp <70:
             t=2
             #print("low traffic")
         elif temp <150:
@@ -138,9 +139,8 @@ while ret:
     dens = int((numpyOnes / dimension)*1000)
     #cv2.imshow("dilated",dilated)
     
-    kernel = cv2.getStructuringElement(cv2.MORPH_ELLIPSE, (2, 2))  
-    closing = cv2.morphologyEx(dilated, cv2.MORPH_CLOSE, kernel) # Fill any small holes
-    contours,h = cv2.findContours(closing,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
+    
+    contours,h = cv2.findContours(dilated,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
     for(i,c) in enumerate(contours):
         (x,y,w,h) = cv2.boundingRect(c)
         contour_tempid = (w >= min_contour_width) and (h >= min_contour_height)
@@ -161,32 +161,33 @@ while ret:
               
     if t==False:
         dilated0 = frameOperation(frame1, originalPic,21, 60)
+        #cv2.imshow("dil0" , dilated0)
         #dilated0 = frameOperation(frame1, originalPic,41, 35)
         for i in dilated0:
             numpyOnes+=np.count_nonzero(i!=0)
            
         dens0 = int((numpyOnes / dimension)*1000) ##402*388  
         #print("frame:",str(fcount)," -density= ",dens0,"-",temp)
-        if dens0>700:
+        if dens0>720:
             pass #error in frame
         elif dens0<7 and dens==0:
             originalPic = np.array(frame1)
-        elif dens0>=350: #very high
+        elif dens0>=320: #very high
             temp=temp+8
-        elif dens0>=200: #high
+        elif dens0>=160: #high
             temp=temp+4
-        elif dens0>=100: #moderate
+        elif dens0>=80: #moderate
             temp=temp+2
-        elif dens0>=50: #low
+        elif dens0>=40: #low
             temp=temp+1
-        elif dens0>=15: #very low
+        elif dens0>=7: #very low
             pass
        
         #print("d frame:{0} temp={1}  dens={2} ".format(str(fcount),str(temp),str(dens0)))
         #cv2.imshow("dil0" , dilated0)
     #cv2.imshow("dil" , dilated)      
     #cv2.imshow("ref", originalPic)
-    cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
+    #cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
     cv2.imshow("Original" , frame1)
     
     if cv2.waitKey(1) == 13:
