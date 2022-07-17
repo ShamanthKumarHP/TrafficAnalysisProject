@@ -46,9 +46,9 @@ specialDays={
 
 csvFiles=dict()
 csvFiles={
-    "URS" : r'C:\Users\Shamanth kumar HP\Desktop\WebD\TrafficAnalysisProject\dataSheetsCSV\Byappanahalli\camera1.csv',
-    "Byyapanahalli" : r'C:\Users\Shamanth kumar HP\Desktop\WebD\TrafficAnalysisProject\dataSheetsCSV\Byappanahalli\camera1.csv',
-    "MysRoad": r'C:\Users\Shamanth kumar HP\Desktop\WebD\TrafficAnalysisProject\dataSheetsCSV\Byappanahalli\camera1.csv'
+    "URS" : r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\csvFiles\URS_road\camera1.csv',
+    "Byyapanahalli" : r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\csvFiles\URS_road\camera1.csv',
+    "MysRoad": r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\csvFiles\URS_road\camera1.csv'
     }
 
 def removeImg():
@@ -67,6 +67,7 @@ def checkSpecialDay(localDate):
 def graph(x,y,day,ts):
     xy = gp.figure(figsize=(14, 6))
     xy = gp.bar(x,y,width=0.9)
+    gp.ylim(0,5)
     gp.xlabel('Time-->',fontsize=16)
     gp.ylabel('Intensity-->',fontsize=16)
     i=0

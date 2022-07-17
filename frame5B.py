@@ -48,10 +48,10 @@ def frameOperation(f1,f2, blurThresh, minThresh):
     return closing
 
 nn1 = time.time()
-min_contour_width=40  #40
-min_contour_height=40  #40
-offset=4      #10
-line_height=195#550
+min_contour_width=25  #40
+min_contour_height=25  #40
+offset=5     #10
+line_height=100#550
 matches =[]
 cnt=0
 FPS = 30
@@ -77,16 +77,45 @@ else:
 ret,frame1 = cap.read()
 ret,frame2 = cap.read()
 
+b = 300
 frame1 = frame1[cropTop:, cropLeft: ]
+frame1 = cv2.pyrDown(frame1)
+frame1 = cv2.normalize(frame1,None, alpha=0,beta=b, norm_type=cv2.NORM_MINMAX)
+
 frame2 = frame2[cropTop:, cropLeft: ]
+frame2 = cv2.pyrDown(frame2)
+frame1 = cv2.normalize(frame1,None, alpha=0,beta=b, norm_type=cv2.NORM_MINMAX)
+
 #originalPic=cv2.imread(r'C:\Users\Shamanth kumar HP\Desktop\WebD\TrafficAnalysisProject\videos\emptyRoad.jpg') #frame1 if empty
 originalPic = frame0[cropTop:, cropLeft: ]
+originalPic = cv2.pyrDown(originalPic)
+originalPic = cv2.normalize(originalPic, None, alpha=0,beta=b, norm_type=cv2.NORM_MINMAX)
+
 len0, width0, _ = originalPic.shape
 print(originalPic.shape)
+
+#originalPic = cv2.pyrDown(originalPic)
+#len0, width0, _ = originalPic.shape
+#frame1 = cv2.pyrDown(frame1)
+#frame2 = cv2.pyrDown(frame2)
+
+plt.imshow(originalPic, cmap = 'gray')
+plt.title("Original")
+plt.show()
+#cv2.imshow("Ori", originalPic)
+'''
+newImg = cv2.pyrDown(originalPic)
+print(newImg.shape)
+len0, width0, _ = originalPic.shape
+plt.imshow(newImg, cmap = 'gray')
+plt.title("DownSample")
+plt.show()
+#cv2.imshow("DS", newImg)
+'''
 dimension = len0 * width0 #1280*720
 
 day, date = generateDay()
-fcount=1
+fcount=0
 temp=1
 totalList=[]
 oneMinList=[]
@@ -95,43 +124,6 @@ feedList=[]
 startHour=6
 #p=0
 while ret:    
-    
-    if fcount % FPS == 0:
-        t=0
-        if temp<22:
-            t=1
-            #print("very low traffic")
-        elif temp <70:
-            t=2
-            #print("low traffic")
-        elif temp <150:
-            t=3
-            #print("moderate")
-        elif temp <176:
-            t=4
-            #print("high traffic")
-        else:
-            t=5
-            #print("very high traffic")
-        temp=1
-        oneMinList.append(t)
-        
-    if fcount % (FPS*6) == 0:
-        #s = max(oneMinList, key = oneMinList.count)
-        h = Counter(oneMinList).most_common(1)[0][0]
-        feedList.append(date)
-        feedList.append(startHour)
-        feedList.append(day)
-        feedList.append(h)
-        intense = intensity.get(h)
-        feedList.append(intense)
-        print(feedList)
-        totalList.append(feedList)
-        
-        oneMinList = []
-        feedList = []
-        startHour+=1
-    
     numpyOnes=0
     t=False    
     
@@ -140,7 +132,7 @@ while ret:
         numpyOnes+=np.count_nonzero(i!=0)
             
     dens = int((numpyOnes / dimension)*1000)
-    cv2.imshow("dilated",dilated)
+    #cv2.imshow("dilated",dilated)
     
     
     contours,h = cv2.findContours(dilated,cv2.RETR_TREE,cv2.CHAIN_APPROX_SIMPLE)
@@ -153,6 +145,7 @@ while ret:
         
         #cv2.line(frame1, (0, line_height), (1000, line_height), (0,255,0), 2)
         centroid = get_centroid(x, y, w, h)
+        #cv2.circle(frame1,centroid, 5, (0,255,0), -1)
         matches.append(centroid)          
         
         for (x,y) in matches:            
@@ -185,28 +178,71 @@ while ret:
             temp=temp+1
         elif dens0>=7: #very low
             pass
-        plt.imshow(dilated0, cmap = 'gray')
-        plt.title("frame:{0} density={1} val={2} ".format(str(fcount),str(dens),str(temp)))
-        plt.show()
+        #plt.imshow(dilated0, cmap = 'gray')
+        #plt.title("frame:{0} density={1} val={2} ".format(str(fcount),str(dens),str(temp)))
+        #plt.show()
         #print("d frame:{0} temp={1}  dens={2} ".format(str(fcount),str(temp),str(dens0)))
-        #cv2.imshow("dil0" , dilated0)
-    #cv2.imshow("dil" , dilated)      
+        cv2.imshow("dil0" , dilated0)
+    cv2.imshow("dil" , dilated)      
     #cv2.imshow("ref", originalPic)
-    cv2.putText(frame1, "Vehicles passed:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
+    cv2.putText(frame1, "Vehicle:" + str(cnt), (10, 90), cv2.FONT_HERSHEY_SIMPLEX, 1,(0, 170, 0), 2)
     cv2.imshow("Original" , frame1)
     
     if cv2.waitKey(1) == 13:
-        break
-    
+        break    
     frame1 = frame2
-    ret , frame2 = cap.read()
     
-    if ret!=False:
+    for _ in range(5):
+        ret, frame2 = cap.read()
+   
+    fcount += 5
+    if ret == True:
         frame2 = frame2[cropTop:, cropLeft: ]
-        fcount+=1
-    #print(fcount)
+        frame2 = cv2.normalize(frame2,None, alpha=0,beta=b, norm_type=cv2.NORM_MINMAX)
+        frame2 = cv2.pyrDown(frame2)
+
+    
+    if fcount % FPS == 0:
+        t=0
+        if temp<8:
+            t=1
+            #print("very low traffic")
+        elif temp <16:
+            t=2
+            #print("low traffic")
+        elif temp <24:
+            t=3
+            #print("moderate")
+        elif temp <40:
+            t=4
+            #print("high traffic")
+        else:
+            t=5
+            #print("very high traffic")
+        #print(temp)
+        temp=1
+        oneMinList.append(t)
         
-    #time.sleep(0.005)
+    if fcount % (FPS*6) == 0:
+        #s = max(oneMinList, key = oneMinList.count)
+        #print(oneMinList)
+        #h = Counter(oneMinList).most_common(1)[0][0]
+        h = int(sum(oneMinList)/len(oneMinList))
+        feedList.append(date)
+        feedList.append(startHour)
+        feedList.append(day)
+        feedList.append(h)
+        intense = intensity.get(h)
+        feedList.append(intense)
+        print(feedList)
+        totalList.append(feedList)
+        
+        oneMinList = []
+        feedList = []
+        startHour+=1
+     
+    
+    #time.sleep(0.05)
 #cv2.imwrite(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\emptyRoad.jpg',originalPic)    
 print("total vehicles passed: ",cnt)   
 print("total frames count: ",fcount)
@@ -217,7 +253,8 @@ if oneMinList != []:
     feedList.append(startHour)
     feedList.append(day)
     #h = max(oneHourList, key = oneHourList.count) #for last remaining minutes != 60
-    h = Counter(oneMinList).most_common(1)[0][0]
+    #h = Counter(oneMinList).most_common(1)[0][0]
+    h = int(sum(oneMinList)/len(oneMinList))
     feedList.append(h)
     intense = intensity.get(h)
     feedList.append(intense)
