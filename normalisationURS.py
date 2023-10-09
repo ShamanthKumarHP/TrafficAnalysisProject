@@ -71,7 +71,7 @@ oneMinList=[]
 oneHourList = []
 feedList=[]
 startHour=6
-offset = 10
+offset = 12
 k=1000
 
 #day
@@ -211,8 +211,9 @@ while ret:
     fcount += 5
     if ret == True:
         frame2 = frame2[cropTop:cropBottom, cropLeft: cropRight]
+        frame2 = cv2.pyrDown(frame2)
         frame2 = cv2.normalize(frame2,None, alpha=0,beta=k, norm_type=cv2.NORM_MINMAX)
-        frame2 = cv2.pyrDown(frame2)  
+          
     #time.sleep(0.05)
 #cv2.imwrite(r'C:\Users\Shamanth kumar HP\Desktop\WebD\FinalYearProject\shamanth\emptyRoad.jpg',originalPic)    
 print("total",cnt)   
